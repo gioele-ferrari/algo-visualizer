@@ -1,49 +1,60 @@
 <script setup>
-import { ref } from 'vue';
+  import { ref } from 'vue';
+  import ArrayBox from './components/ArrayBox.vue';
 
-const arrayToSort = ref([5, 10, 1, 7, 9, 4]);
-const arraySorted = ref([]);
-const isClicked = ref(false);
+  const arrayToSort = ref([5, 10, 1, 7, 9, 4]);
+  const arraySorted = ref([]);
 
-const activeLength = ref(arrayToSort.value.length);
+  const sortedIndex = ref(Array(arrayToSort.value.length).fill(false));
 
-async function sortArray() {
-  isClicked.value = true;
+  const activeLength = ref(arrayToSort.value.length);
+  
+  const bubbleSort = async() => {
+    arraySorted.value = arrayToSort.value.slice();
+
+    for (let i = 0; i < arraySorted.value.length - 1; i++) {
+      for (let j = 0; j < arraySorted.value.length - i - 1; j++) {
+        if (arraySorted.value[j] > arraySorted.value[j + 1]) {
+          let temp = arraySorted.value[j];
+          arraySorted.value[j] = arraySorted.value[j + 1];
+          arraySorted.value[j + 1] = temp;
+        }
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+      sortedIndex.value[arraySorted.value.length - i - 1] = true;
+      activeLength.value--;
+    }
+  };
+
+  const insertionSort = async () => {
   arraySorted.value = arrayToSort.value.slice();
 
-  for (let i = 0; i < arraySorted.value.length - 1; i++) {
-    for (let j = 0; j < arraySorted.value.length - i - 1; j++) {
-      if (arraySorted.value[j] > arraySorted.value[j + 1]) {
-        let temp = arraySorted.value[j];
-        arraySorted.value[j] = arraySorted.value[j + 1];
-        arraySorted.value[j + 1] = temp;
-      }
-      await new Promise(resolve => setTimeout(resolve, 1000));
+  for (let i = 1; i < arraySorted.value.length; i++) {
+    let key = arraySorted.value[i];
+    let j = i - 1;
+
+    while (j >= 0 && arraySorted.value[j] > key) {
+      arraySorted.value[j + 1] = arraySorted.value[j];
+      j = j - 1;
     }
+    sortedIndex.value[j + 1] = key;
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    isSorted.value[i - 1] = true;
     activeLength.value--;
   }
-}
+};
+
 </script>
 
 
 <template>
   <div>
+    <ArrayBox :displayArray="arrayToSort"></ArrayBox>
     <div class="content-box">
-      <div class="index-box" v-for="(value, index) in arrayToSort" :key="index">{{ value }}</div>
+      <button @click="bubbleSort" class="btn-sort">Bubble Sort</button>
+      <button @click="insertionSort" class="btn-sort">Insertion Sort</button>
     </div>
-    <div class="content-box">
-      <button @click="sortArray" class="btn-sort">Clicca per ordinare</button>
-    </div>
-    <div v-if="isClicked">
-      <div class="content-box">
-        <div 
-          class="index-box"             
-          :class="{ 'completed': index >= activeLength }"
-          v-for="(value, index) in arraySorted" :key="index">
-            {{ value }}
-        </div>
-      </div>
-    </div>
+    <ArrayBox :displayArray="arraySorted" :sortedIndex="sortedIndex"></ArrayBox>
   </div>
 </template>
 
@@ -63,26 +74,6 @@ async function sortArray() {
     justify-content: center;
     flex-direction: row;
     gap: 10px;
-  }
-
-  .index-box {
-    width: 50px;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 10px;
-
-    color: #FFF;
-    background-color: #464646;
-    box-shadow: #383838 0px 10px 0px 0px;
-  }
-
-  .completed {
-    background-color: #588157;
-    box-shadow: #436243 0px 10px 0px 0px;
   }
 
   button {

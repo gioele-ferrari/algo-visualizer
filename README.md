@@ -1,6 +1,6 @@
 # Algorithm Visualizer 👀🔢
 
-This project was created to learn the basics of Vue. All basic constructs like ref or interaction between DOM and script are implemented.
+This project was created to learn the basics of Vue. All basic constructs like `ref` or interaction between DOM and script are implemented.
 
 ## How to start? 🚩
 
