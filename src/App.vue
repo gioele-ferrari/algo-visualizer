@@ -15,10 +15,12 @@
    * L'array tiene traccia degli index ordinati
    */
   const sortedIndex = ref(Array(arrayToSort.value.length).fill(false));
+  const isSorted = ref(false);
   
   const bubbleSort = async() => {
     sortedIndex.value.fill(false);
     arraySorted.value = arrayToSort.value.slice();
+    isSorted.value = false;
 
     for (let i = 0; i < arraySorted.value.length - 1; i++) {
       for (let j = 0; j < arraySorted.value.length - i - 1; j++) {
@@ -31,11 +33,13 @@
       }
       sortedIndex.value[arraySorted.value.length - i - 1] = true;
     }
+    isSorted.value = true;
   };
 
   const selectionSort = async () => {
     sortedIndex.value.fill(false);
-    arraySorted.value = arrayToSort.value.slice();
+    arraySorted.value = arrayToSort.value.slice();    
+    isSorted.value = false;
 
     for (let i = 0; i < arraySorted.value.length - 1; i++) {
       let minIndex = i;
@@ -55,6 +59,7 @@
       await new Promise(resolve => setTimeout(resolve, 1000));
       sortedIndex.value[i] = true;
     }
+    isSorted.value = true;
   };
 
   const fillArray = () => {
@@ -69,18 +74,22 @@
 <template>
   <div>
     <div class="content-box">
-      <p class="info-text">1</p>
+      <p class="info-text">1.</p>
       <button @click="fillArray" class="btn-sort">Randomize</button>
       <p class="info-text">&nbsp;</p>
     </div>
-    <ArrayBox :displayArray="arrayToSort"></ArrayBox>
+    <ArrayBox :displayArray="arrayToSort"/>
     <div class="content-box">
-      <p class="info-text">2</p>
+      <p class="info-text">2.</p>
       <button @click="bubbleSort" class="btn-sort">Bubble Sort</button>
       <button @click="selectionSort" class="btn-sort">Selection Sort</button>
       <p class="info-text">&nbsp;</p>
     </div>
-    <ArrayBox :displayArray="arraySorted" :sortedIndex="sortedIndex"></ArrayBox>
+    <ArrayBox :displayArray="arraySorted" :sortedIndex="sortedIndex"/>
+    <div class="content-box">
+      <p class="info-text">3.</p>
+      <p class="info-text"> Array: {{ isSorted === true ? "sorted" : "unsorted" }}</p>
+    </div>
   </div>
 </template>
 
@@ -112,8 +121,9 @@
     font-size: 15px;
     transition: all 0.3s ease;
     box-shadow: #383838 0px 10px 0px 0px;
-    color: #FFF;
+    color: #ffffffc3;
     cursor: pointer;
+    font-weight: 500;
   }
 
   button:active {

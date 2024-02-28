@@ -36,9 +36,10 @@
 
         border-radius: 10px;
 
-        color: #FFF;
+        color: #ffffffc3;
         background-color: #464646;
         box-shadow: #383838 0px 10px 0px 0px;
+        font-weight: 500;
     }
 
     .completed {
