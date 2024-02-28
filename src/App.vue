@@ -8,7 +8,7 @@
    * Il secondo serve invece per tenere traccia dell'array
    * ordinato
    */
-  const arrayToSort = ref([5, 10, 1, 7, 9, 4]);
+  const arrayToSort = ref([1, 2, 3, 4, 5, 6]);
   const arraySorted = ref([]);
 
   /**
@@ -17,6 +17,7 @@
   const sortedIndex = ref(Array(arrayToSort.value.length).fill(false));
   
   const bubbleSort = async() => {
+    sortedIndex.value.fill(false);
     arraySorted.value = arrayToSort.value.slice();
 
     for (let i = 0; i < arraySorted.value.length - 1; i++) {
@@ -33,6 +34,7 @@
   };
 
   const selectionSort = async () => {
+    sortedIndex.value.fill(false);
     arraySorted.value = arrayToSort.value.slice();
 
     for (let i = 0; i < arraySorted.value.length - 1; i++) {
@@ -56,7 +58,7 @@
   };
 
   const fillArray = () => {
-    for(var i = 0; i < arrayToSort.value.length - 1; i++) {
+    for(var i = 0; i < arrayToSort.value.length; i++) {
       arrayToSort.value[i] = Math.floor(Math.random() * 100);
     }
   };
@@ -67,12 +69,16 @@
 <template>
   <div>
     <div class="content-box">
-      <button @click="fillArray" class="btn-sort">Fill array</button>
+      <p class="info-text">1</p>
+      <button @click="fillArray" class="btn-sort">Randomize</button>
+      <p class="info-text">&nbsp;</p>
     </div>
     <ArrayBox :displayArray="arrayToSort"></ArrayBox>
     <div class="content-box">
+      <p class="info-text">2</p>
       <button @click="bubbleSort" class="btn-sort">Bubble Sort</button>
       <button @click="selectionSort" class="btn-sort">Selection Sort</button>
+      <p class="info-text">&nbsp;</p>
     </div>
     <ArrayBox :displayArray="arraySorted" :sortedIndex="sortedIndex"></ArrayBox>
   </div>
@@ -88,6 +94,13 @@
     justify-content: center;
     flex-direction: row;
     gap: 10px;
+  }
+
+  .info-text {
+    font-size: 3.5rem;
+    color: #464646;
+    font-weight: 800;
+    padding: 0 10px;
   }
 
   button {

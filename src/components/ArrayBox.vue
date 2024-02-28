@@ -19,7 +19,7 @@
             class="index-box"
             v-for="(value, index) in props.displayArray"
             :key="index"
-            :class="{ 'completed' : props.sortedIndex && props.sortedIndex[index] }">
+            :class="{ 'completed': props.sortedIndex && props.sortedIndex[index] }">
                 {{ value }}
         </div>
     </div>
