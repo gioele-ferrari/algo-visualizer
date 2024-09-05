@@ -9,7 +9,7 @@ Segui questi passaggi per avviare il progetto sul tuo computer:
 1. **Clona il repository**: Scarica il progetto localmente.
 
     ```bash
-    git clone https://github.com/yourusername/sorting-algorithm-visualizer.git
+    git clone https://github.com/gioele-ferrari/algo-visualizer.git
     ```
 
 2. **Installa le dipendenze**: Accedi alla cartella del progetto ed esegui il comando:
