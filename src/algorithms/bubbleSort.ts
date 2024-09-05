@@ -1,4 +1,4 @@
-export const bubbleSort = async (array: number[], setSortedArray: (arr: number[]) => void): Promise<number[]> => {
+export const bubbleSort = async (array: number[], setSortedArray: (array: number[]) => void): Promise<number[]> => {
     const tempArray = [...array];
     let len = tempArray.length;
   
