@@ -22,10 +22,20 @@ export const AlgorithmVisualizer: React.FC<AlgorithmVisualizerInterface> = ({ ar
         }
     };
 
+    const shuffleArray = () => {
+      const tempArray = [...sortedArray];
+      for (let i = tempArray.length - 1; i > 0; i--) { 
+        const j = Math.floor(Math.random() * (i + 1)); 
+        [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]]; 
+      }
+      setSortedArray([...tempArray]);
+    }
+
     return (
         <div>
             <SortingArray array={sortedArray} highlightedIndex={highlightedIndex} />
-            <button onClick={runAlgorithm}>Start Sorting</button>
+            <button onClick={runAlgorithm} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Start Sorting</button>
+            <button onClick={shuffleArray} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Shuffle Array</button>
       </div>
       );
 }
