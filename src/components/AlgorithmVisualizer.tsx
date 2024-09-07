@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { bubbleSort } from "../algorithms/bubbleSort";
 import { SortingArray } from "./SortingArray";
 
@@ -12,10 +12,15 @@ export const AlgorithmVisualizer: React.FC<AlgorithmVisualizerInterface> = ({ ar
     const [sortedArray, setSortedArray] = useState<number[]>(array);
     const [highlightedIndex, setHighlightedIndex] = useState<number[]>([]);
 
+    // Dobbiamo inserire array
+    useEffect(() => {
+      setSortedArray(array);
+    }, [array])
+
     const runAlgorithm = () => {
         switch (algorithm) {
           case 'bubbleSort':
-            bubbleSort(sortedArray, setSortedArray);
+            bubbleSort(sortedArray, setSortedArray, setHighlightedIndex);
             break;
           default:
             break;
@@ -28,6 +33,7 @@ export const AlgorithmVisualizer: React.FC<AlgorithmVisualizerInterface> = ({ ar
         const j = Math.floor(Math.random() * (i + 1)); 
         [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]]; 
       }
+      setHighlightedIndex([]);
       setSortedArray([...tempArray]);
     }
 

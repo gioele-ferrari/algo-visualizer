@@ -11,8 +11,10 @@ export const SortingArray: React.FC<SortingArrayInterface> = ({ array, highlight
             {array.map((value, index) => (
                 <div
                     key={index}
-                    style={{ width: '20px', height: `${value * 10}px` }}
-                    className="bg-gray-500"
+                    style={{ height: `${value * 5}px`, width: '20px' }}
+                    className={`bg-gray-500 ${
+                        highlightedIndex.includes(index) ? 'bg-red-500' : ''
+                    }`}
                 >
                     {value}
                 </div>
