@@ -21,7 +21,7 @@ Segui questi passaggi per avviare il progetto sul tuo computer:
 3. **Avvia il server di sviluppo**: Avvia il progetto con il seguente comando:
 
     ```bash
-    npm start
+    npm run dev
     ```
 
 4. Una volta avviato il server, puoi accedere al visualizzatore tramite il tuo browser all'indirizzo fornito in console da Vite.

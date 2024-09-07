@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { bubbleSort } from "../algorithms/bubbleSort";
 import { SortingArray } from "./SortingArray";
+import { runAlgorithm, shuffleArray } from "../utils/utils";
 
 interface AlgorithmVisualizerInterface {
     array: number[],
@@ -15,35 +16,23 @@ export const AlgorithmVisualizer: React.FC<AlgorithmVisualizerInterface> = ({ ar
     // Dobbiamo inserire array
     useEffect(() => {
       setSortedArray(array);
-    }, [array])
-
-    const runAlgorithm = () => {
-        switch (algorithm) {
-          case 'bubbleSort':
-            bubbleSort(sortedArray, setSortedArray, setHighlightedIndex);
-            break;
-          default:
-            break;
-        }
-    };
-
-    const shuffleArray = () => {
-      const tempArray = [...sortedArray];
-      for (let i = tempArray.length - 1; i > 0; i--) { 
-        const j = Math.floor(Math.random() * (i + 1)); 
-        [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]]; 
-      }
-      setHighlightedIndex([]);
-      setSortedArray([...tempArray]);
-    }
+    }, [array]);
 
     return (
-        <div>
-            <SortingArray array={sortedArray} highlightedIndex={highlightedIndex} />
-            <div className="flex justify-center m-5">
-              <button onClick={runAlgorithm} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full m-5">Start Sorting</button>
-              <button onClick={shuffleArray} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Shuffle Array</button>
-            </div>
+      <div>
+        <SortingArray array={sortedArray} highlightedIndex={highlightedIndex} />
+        <div className="flex justify-center mt-5 gap-5">
+          <button 
+            className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full"
+            onClick={() => runAlgorithm("bubbleSort", sortedArray, setSortedArray, setHighlightedIndex)}>
+            Start
+          </button>
+          <button 
+            className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full"
+            onClick={() => shuffleArray(sortedArray, setSortedArray, setHighlightedIndex)}>
+            Shuffle
+          </button>
+        </div>
       </div>
-      );
+    );
 }
