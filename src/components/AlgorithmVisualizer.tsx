@@ -40,8 +40,10 @@ export const AlgorithmVisualizer: React.FC<AlgorithmVisualizerInterface> = ({ ar
     return (
         <div>
             <SortingArray array={sortedArray} highlightedIndex={highlightedIndex} />
-            <button onClick={runAlgorithm} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Start Sorting</button>
-            <button onClick={shuffleArray} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Shuffle Array</button>
+            <div className="flex justify-center m-5">
+              <button onClick={runAlgorithm} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full m-5">Start Sorting</button>
+              <button onClick={shuffleArray} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Shuffle Array</button>
+            </div>
       </div>
       );
 }
