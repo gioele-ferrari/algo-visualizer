@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { bubbleSort } from "../algorithms/bubbleSort";
 import { SortingArray } from "./SortingArray";
 import { runAlgorithm, shuffleArray } from "../utils/utils";
 
@@ -24,7 +23,7 @@ export const AlgorithmVisualizer: React.FC<AlgorithmVisualizerInterface> = ({ ar
         <div className="flex justify-center mt-5 gap-5">
           <button 
             className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full"
-            onClick={() => runAlgorithm("bubbleSort", sortedArray, setSortedArray, setHighlightedIndex)}>
+            onClick={() => runAlgorithm(algorithm, sortedArray, setSortedArray, setHighlightedIndex)}>
             Start
           </button>
           <button 

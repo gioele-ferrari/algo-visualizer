@@ -7,7 +7,7 @@ interface SortingArrayInterface {
 
 export const SortingArray: React.FC<SortingArrayInterface> = ({ array, highlightedIndex }) => {
     return (
-        <div className="flex space-x-2 justify-center items-center">
+        <div className="flex space-x-2 justify-center items-center h-[600px]">
             {array.map((value, index) => (
                 <div
                     key={index}
