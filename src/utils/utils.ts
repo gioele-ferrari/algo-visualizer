@@ -4,11 +4,12 @@ export const runAlgorithm = async (
   algorithm: string,
   array: number[],
   setArray: (array: number[]) => void,
-  setHighlightedIndex: (array: number[]) => void
+  setHighlightedIndex: (array: number[]) => void,
+  selectedSpeed: number
 ) => {
   switch (algorithm) {
     case 'bubbleSort':
-      await bubbleSort(array, setArray, setHighlightedIndex);
+      await bubbleSort(array, setArray, setHighlightedIndex, selectedSpeed);
       break;
     case 'selectionSort':
       break;  

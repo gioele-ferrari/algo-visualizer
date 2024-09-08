@@ -13,7 +13,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-gray-600">
+    <div className="bg-gray-700">
       <Navbar array={array} setArray={setArray} setHighlightedIndex={setHighlightedIndex}/>
       <AlgorithmVisualizer array={array} setArray={setArray} highlightedIndex={highlightedIndex}/>
       <Footer/>
