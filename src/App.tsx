@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <div className="bg-gray-600">
-      <AlgorithmVisualizer array={array} algorithm={"bubbleSort"} />
+      <AlgorithmVisualizer array={array} setArray={setArray}/>
     </div>
   );
 }
