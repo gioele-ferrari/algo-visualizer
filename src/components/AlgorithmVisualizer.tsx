@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { SortingArray } from "./SortingArray";
 import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
 
 interface AlgorithmVisualizerInterface {
   array: number[];
@@ -19,6 +20,7 @@ export const AlgorithmVisualizer: React.FC<AlgorithmVisualizerInterface> = ({ ar
       <div>
         <Navbar array={array} setArray={setArray} setHighlightedIndex={setHighlightedIndex}/>
         <SortingArray array={array} highlightedIndex={highlightedIndex} />
+        <Footer/>
       </div>
     );
 }
