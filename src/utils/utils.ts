@@ -10,7 +10,9 @@ export const runAlgorithm = async (
     case 'bubbleSort':
       await bubbleSort(array, setArray, setHighlightedIndex);
       break;
-    default:
+    case 'selectionSort':
+      break;  
+      default:
       break;
   }
 };
