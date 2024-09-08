@@ -34,6 +34,7 @@ export const Navbar: React.FC<NavbarInterface> = ({ array, setArray, setHighligh
                 >
                     <option selected>Seleziona un algoritmo</option>
                     <option value="bubbleSort">Bubble Sort</option>
+                    <option value="selectionSort">Selection Sort</option>
                 </select>
                 <select 
                 className="bg-blue-500 text-white font-bold py-2 px-4 border-b-4 border-blue-700 rounded"

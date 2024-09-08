@@ -1,4 +1,5 @@
 import { bubbleSort } from "../algorithms/bubbleSort";
+import { selectionSort } from "../algorithms/selectionSort";
 
 export const runAlgorithm = async (
   algorithm: string,
@@ -12,6 +13,7 @@ export const runAlgorithm = async (
       await bubbleSort(array, setArray, setHighlightedIndex, selectedSpeed);
       break;
     case 'selectionSort':
+      await selectionSort(array, setArray, setHighlightedIndex, selectedSpeed);
       break;  
       default:
       break;
