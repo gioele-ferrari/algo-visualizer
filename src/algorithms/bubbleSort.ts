@@ -21,6 +21,8 @@ export const bubbleSort = async (
         setHighlightedIndex([]);
       }
     }
+
+    setHighlightedIndex(Array.from({ length: len }, (_, i) => i));
   
     return tempArray;
 };

@@ -1,26 +1,17 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { SortingArray } from "./SortingArray";
-import { Navbar } from "./Navbar";
-import { Footer } from "./Footer";
 
 interface AlgorithmVisualizerInterface {
-  array: number[];
-  setArray: (array: number[]) => void;
-}
+  array: number[],
+  setArray: (array: number[]) => void,
+  highlightedIndex: number[]
+};
 
-export const AlgorithmVisualizer: React.FC<AlgorithmVisualizerInterface> = ({ array, setArray }) => {
-    const [highlightedIndex, setHighlightedIndex] = useState<number[]>([]);
+export const AlgorithmVisualizer: React.FC<AlgorithmVisualizerInterface> = ({ array, setArray, highlightedIndex }) => {
+  // Quando l'array cambia dobbiamo fare il set dei nuovi valori
+  useEffect(() => {
+    setArray(array);
+  }, [array]);
 
-    // Dobbiamo inserire array
-    useEffect(() => {
-      setArray(array);
-    }, [array]);
-
-    return (
-      <div>
-        <Navbar array={array} setArray={setArray} setHighlightedIndex={setHighlightedIndex}/>
-        <SortingArray array={array} highlightedIndex={highlightedIndex} />
-        <Footer/>
-      </div>
-    );
+  return ( <SortingArray array={array} highlightedIndex={highlightedIndex} /> );
 }
