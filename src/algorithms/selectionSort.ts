@@ -1,3 +1,5 @@
+import { playAudio } from "../utils/utils";
+
 export const selectionSort = async (
     array: number[], 
     setArray: (array: number[]) => void,
@@ -25,13 +27,15 @@ export const selectionSort = async (
         if(minIndex != i) {
             [tempArray[i], tempArray[minIndex]] = [tempArray[minIndex], tempArray[i]];
             setArray([...tempArray]);
+            playAudio('src/assets/swap.wav');
             await new Promise(resolve => setTimeout(resolve, selectedSpeed));
         }
 
         await new Promise(resolve => setTimeout(resolve, selectedSpeed));
         setHighlightedIndex([]);
     }
-
+    
+    playAudio('src/assets/finish.wav');
     setHighlightedIndex(Array.from({ length: length }, (_, i) => i));
 
     return tempArray;

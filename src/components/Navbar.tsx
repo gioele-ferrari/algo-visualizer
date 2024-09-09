@@ -33,7 +33,6 @@ export const Navbar: React.FC<NavbarInterface> = ({ array, setArray, setHighligh
                 onChange={handleAlgorithmChange}
                 value={selectedAlgorithm}
                 >
-                    <option selected>Seleziona un algoritmo</option>
                     <option value="bubbleSort">Bubble Sort</option>
                     <option value="selectionSort">Selection Sort</option>
                     <option value="insertionSort">Insertion Sort</option>
@@ -43,7 +42,6 @@ export const Navbar: React.FC<NavbarInterface> = ({ array, setArray, setHighligh
                 onChange={handleSpeedChange}
                 value={selectedSpeed}
                 >
-                    <option selected>Seleziona una velocità</option>
                     <option value="100">Veloce (100ms)</option>
                     <option value="250">Medio (250ms)</option>
                     <option value="500">Lento (500ms)</option>

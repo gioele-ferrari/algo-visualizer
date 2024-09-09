@@ -1,3 +1,5 @@
+import { playAudio } from "../utils/utils";
+
 export const bubbleSort = async (
   array: number[], 
   setArray: (array: number[]) => void,
@@ -15,6 +17,7 @@ export const bubbleSort = async (
         if (tempArray[j] > tempArray[j + 1]) {
           [tempArray[j], tempArray[j + 1]] = [tempArray[j + 1], tempArray[j]];
           setArray([...tempArray]);
+          playAudio('src/assets/swap.wav');
           await new Promise(resolve => setTimeout(resolve, selectedSpeed));
         }
 
@@ -23,6 +26,7 @@ export const bubbleSort = async (
       }
     }
 
+    playAudio('src/assets/finish.wav');
     setHighlightedIndex(Array.from({ length: length }, (_, i) => i));
   
     return tempArray;

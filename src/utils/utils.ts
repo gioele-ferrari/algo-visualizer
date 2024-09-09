@@ -45,3 +45,8 @@ export const generateRandomArray = (
 ) => {
     return Array.from({ length }, () => Math.floor(Math.random() * (max - min) + min));
 };
+
+export const playAudio = (audioFile: string) => {
+  const audio = new Audio(audioFile);
+  audio.play();
+};
