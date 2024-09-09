@@ -1,6 +1,7 @@
-import { runAlgorithm, shuffleArray } from "../utils/utils"
+import { generateRandomArray, runAlgorithm, shuffleArray } from "../utils/utils"
 import { IoPlay } from "react-icons/io5";
 import { FaShuffle } from "react-icons/fa6";
+import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
 import { useState } from "react";
 
 interface NavbarInterface {
@@ -35,6 +36,7 @@ export const Navbar: React.FC<NavbarInterface> = ({ array, setArray, setHighligh
                     <option selected>Seleziona un algoritmo</option>
                     <option value="bubbleSort">Bubble Sort</option>
                     <option value="selectionSort">Selection Sort</option>
+                    <option value="insertionSort">Insertion Sort</option>
                 </select>
                 <select 
                 className="bg-blue-500 text-white font-bold py-2 px-4 border-b-4 border-blue-700 rounded"
@@ -46,6 +48,12 @@ export const Navbar: React.FC<NavbarInterface> = ({ array, setArray, setHighligh
                     <option value="250">Medio (250ms)</option>
                     <option value="500">Lento (500ms)</option>
                 </select>
+                <button 
+                    className="flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                    onClick={() => setArray(generateRandomArray(10, 10, 100))}>
+                    Generate
+                    <GiPerspectiveDiceSixFacesRandom />
+                </button>
                 <button 
                     className="flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
                     onClick={() => shuffleArray(array, setArray, setHighlightedIndex)}>
