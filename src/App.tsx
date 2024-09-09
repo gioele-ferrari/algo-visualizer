@@ -9,7 +9,7 @@ export default function App() {
   const [highlightedIndex, setHighlightedIndex] = useState<number[]>([]);
 
   useEffect(() => {
-    setArray(generateRandomArray(10, 10, 100));
+    setArray(generateRandomArray(10, 10, 100, setHighlightedIndex));
   }, []);
 
   return (

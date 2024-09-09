@@ -48,7 +48,7 @@ export const Navbar: React.FC<NavbarInterface> = ({ array, setArray, setHighligh
                 </select>
                 <button 
                     className="flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-                    onClick={() => setArray(generateRandomArray(10, 10, 100))}>
+                    onClick={() => setArray(generateRandomArray(10, 10, 100, setHighlightedIndex))}>
                     Generate
                     <GiPerspectiveDiceSixFacesRandom />
                 </button>
